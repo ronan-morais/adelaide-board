@@ -1,10 +1,5 @@
 ---
-import { XataClient } from "../xata";
-const xata = new XataClient({
-  apiKey: import.meta.env.XATA_API_KEY,
-  branch: import.meta.env.XATA_BRANCH,
-});
-const posts = await xata.db["service-categories"].getAll();
+import Test from "../components/test.jsx";
 ---
 
 <html lang="en">
@@ -16,12 +11,6 @@ const posts = await xata.db["service-categories"].getAll();
     <title>Astro</title>
   </head>
   <body>
-    <ul>
-			{
-				posts.map(item=>(
-					<li>{item.Title}</li>
-				))
-			}
-		</ul>
+    <Test client:load />
   </body>
 </html>
