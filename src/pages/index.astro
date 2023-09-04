@@ -1,0 +1,27 @@
+---
+import { XataClient } from "../xata";
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH,
+});
+const posts = await xata.db["service-categories"].getAll();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <ul>
+			{
+				posts.map(item=>(
+					<li>{item.Title}</li>
+				))
+			}
+		</ul>
+  </body>
+</html>

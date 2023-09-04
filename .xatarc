@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Adelaide-Boards-6mppfj.us-east-1.xata.sh/db/adelaide-boards",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}
