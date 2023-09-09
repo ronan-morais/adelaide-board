@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/solid-js": "^3.0.0",
     "@astrojs/tailwind": "^5.0.0",
+    "@astrojs/vercel": "^4.0.5",
     "@xata.io/client": "^0.26.3",
     "astro": "^3.0.7",
     "solid-js": "^1.7.11",
