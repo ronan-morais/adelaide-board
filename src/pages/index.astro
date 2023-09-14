@@ -1,16 +1,19 @@
 ---
-import Test from "../components/test.jsx";
+import { XataClient } from "../xata";
+import Board from "../layouts/board.astro";
+import Card from "../components/card";
+
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH,
+});
+const cards = await xata.db.cards.getAll();
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <Test client:load />
-  </body>
-</html>
+<Board>
+  <div class="container mt-4 mx-auto">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {cards.map(card => <Card title={card.title} />)}
+    </div>
+  </div>
+</Board>

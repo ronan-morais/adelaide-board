@@ -7,32 +7,73 @@ import type {
 } from "@xata.io/client";
 
 const tables = [
-  { name: "posts", columns: [] },
-  { name: "product-categories", columns: [{ name: "title", type: "string" }] },
+  {
+    name: "cards",
+    columns: [
+      { name: "idService", type: "link", link: { table: "serviceCategories" } },
+      { name: "idProduct", type: "link", link: { table: "productCategories" } },
+      { name: "expireAt", type: "datetime" },
+      { name: "email", type: "email" },
+      { name: "title", type: "string" },
+      { name: "desc", type: "text" },
+      { name: "location", type: "string" },
+      { name: "phoneNumber", type: "string" },
+      { name: "contact", type: "string" },
+      { name: "website", type: "string" },
+      { name: "type", type: "multiple" },
+      { name: "image", type: "string" },
+      { name: "needs", type: "multiple" },
+    ],
+  },
+  {
+    name: "productCategories",
+    columns: [{ name: "title", type: "string" }],
+    revLinks: [{ column: "idProduct", table: "cards" }],
+  },
   { name: "users", columns: [] },
-  { name: "service-categories", columns: [{ name: "Title", type: "string" }] },
+  {
+    name: "serviceCategories",
+    columns: [{ name: "Title", type: "string" }],
+    revLinks: [{ column: "idService", table: "cards" }],
+  },
+  { name: "favorites", columns: [] },
+  {
+    name: "needs",
+    columns: [
+      { name: "title", type: "string" },
+      { name: "desc", type: "text" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
 export type InferredTypes = SchemaInference<SchemaTables>;
 
-export type Posts = InferredTypes["posts"];
-export type PostsRecord = Posts & XataRecord;
+export type Cards = InferredTypes["cards"];
+export type CardsRecord = Cards & XataRecord;
 
-export type ProductCategories = InferredTypes["product-categories"];
+export type ProductCategories = InferredTypes["productCategories"];
 export type ProductCategoriesRecord = ProductCategories & XataRecord;
 
 export type Users = InferredTypes["users"];
 export type UsersRecord = Users & XataRecord;
 
-export type ServiceCategories = InferredTypes["service-categories"];
+export type ServiceCategories = InferredTypes["serviceCategories"];
 export type ServiceCategoriesRecord = ServiceCategories & XataRecord;
 
+export type Favorites = InferredTypes["favorites"];
+export type FavoritesRecord = Favorites & XataRecord;
+
+export type Needs = InferredTypes["needs"];
+export type NeedsRecord = Needs & XataRecord;
+
 export type DatabaseSchema = {
-  posts: PostsRecord;
-  "product-categories": ProductCategoriesRecord;
+  cards: CardsRecord;
+  productCategories: ProductCategoriesRecord;
   users: UsersRecord;
-  "service-categories": ServiceCategoriesRecord;
+  serviceCategories: ServiceCategoriesRecord;
+  favorites: FavoritesRecord;
+  needs: NeedsRecord;
 };
 
 const DatabaseClient = buildClient();
