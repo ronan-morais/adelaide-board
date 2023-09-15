@@ -13,7 +13,7 @@ const cards = await xata.db.cards.getAll();
 <Board>
   <div class="container mt-4 mx-auto">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {cards.map(card => <Card title={card.title} />)}
+      {cards.map(card => <Card image={card.image} title={card.title} desc={card.desc} location={card.location} type={card.type} />)}
     </div>
   </div>
 </Board>
