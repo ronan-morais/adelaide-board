@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.tag {
+  @apply text-xs sm:text-sm text-teal-800 font-mono bg-teal-100 inline rounded-full px-2 py-1 align-top animate-pulse;
+}

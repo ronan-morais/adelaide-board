@@ -1,19 +1,32 @@
 ---
-import { XataClient } from "../xata";
 import Board from "../layouts/board.astro";
 import Card from "../components/card";
+import { XataClient } from "../xata";
 
 const xata = new XataClient({
   apiKey: import.meta.env.XATA_API_KEY,
   branch: import.meta.env.XATA_BRANCH,
+  enableBrowser: true,
 });
-const cards = await xata.db.cards.getAll();
+
+const data = await xata.db.cards.getMany();
 ---
 
 <Board>
-  <div class="container mt-4 mx-auto">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {cards.map(card => <Card image={card.image} title={card.title} desc={card.desc} location={card.location} type={card.type} />)}
-    </div>
+  <div
+    class="px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
+    {
+      data.map(card => (
+        <Card
+          image={card.image}
+          title={card.title}
+          shortDesc={card.shortDesc}
+          location={card.location}
+          type={card.type}
+          needs={card.needs}
+        />
+      ))
+    }
   </div>
 </Board>

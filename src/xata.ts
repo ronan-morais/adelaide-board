@@ -15,7 +15,7 @@ const tables = [
       { name: "expireAt", type: "datetime" },
       { name: "email", type: "email" },
       { name: "title", type: "string" },
-      { name: "desc", type: "text" },
+      { name: "shortDesc", type: "text" },
       { name: "location", type: "string" },
       { name: "phoneNumber", type: "string" },
       { name: "contact", type: "string" },
@@ -23,6 +23,7 @@ const tables = [
       { name: "type", type: "multiple" },
       { name: "image", type: "string" },
       { name: "needs", type: "multiple" },
+      { name: "longDesc", type: "text" },
     ],
   },
   {
