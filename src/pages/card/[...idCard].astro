@@ -1,5 +1,5 @@
 ---
-import ImageCard from "../../components/imageCard";
+import { Image } from "astro:assets";
 import Item from "../../layouts/item.astro";
 import { XataClient } from "../../xata";
 import { BsExclamationDiamond } from "solid-icons/bs";
@@ -24,7 +24,7 @@ const data = await xata.db.cards
     <div class="w-full p-10">
       <h1 class="text-xl font-bold border-b-2 mb-4 pb-2">{data?.title}</h1>
       <div class="font-mono text-sm border-b-2 mb-4 pb-4">
-        {data?.shortDesc}
+        {data?.desc}
       </div>
       <div
         class="flex pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
@@ -56,6 +56,14 @@ const data = await xata.db.cards
         }
       </div>
     </div>
-    <ImageCard src="https://source.unsplash.com/random/?job" client:load />
+    <div class="w-1/2 relative bg-red-300 min-h-full">
+      <Image
+        class="absolute w-full h-full object-cover"
+        src={data?.image}
+        alt="pub"
+        width={100}
+        height={100}
+      />
+    </div>
   </div>
 </Item>

@@ -15,7 +15,7 @@ const tables = [
       { name: "expireAt", type: "datetime" },
       { name: "email", type: "email" },
       { name: "title", type: "string" },
-      { name: "shortDesc", type: "text" },
+      { name: "desc", type: "text" },
       { name: "location", type: "string" },
       { name: "phoneNumber", type: "string" },
       { name: "contact", type: "string" },
@@ -23,7 +23,6 @@ const tables = [
       { name: "type", type: "multiple" },
       { name: "image", type: "string" },
       { name: "needs", type: "multiple" },
-      { name: "longDesc", type: "text" },
     ],
   },
   {
@@ -31,7 +30,18 @@ const tables = [
     columns: [{ name: "title", type: "string" }],
     revLinks: [{ column: "idProduct", table: "cards" }],
   },
-  { name: "users", columns: [] },
+  {
+    name: "users",
+    columns: [
+      { name: "userAgent", type: "string" },
+      { name: "geolocation", type: "string" },
+      { name: "language", type: "string" },
+      { name: "screen", type: "string" },
+      { name: "ip", type: "string" },
+      { name: "platform", type: "string" },
+      { name: "dateTimeAccess", type: "string" },
+    ],
+  },
   {
     name: "serviceCategories",
     columns: [{ name: "Title", type: "string" }],
