@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .tag {
-  @apply text-xs sm:text-base text-teal-800 font-mono bg-teal-100 inline rounded-full px-2 py-1 align-top animate-pulse;
+  @apply text-xs sm:text-sm font-bold text-teal-800 font-mono bg-teal-100 inline rounded-full px-2 py-1 align-top animate-pulse;
 }
