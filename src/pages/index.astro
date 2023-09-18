@@ -19,7 +19,7 @@ const data = await xata.db.cards.getAll();
         data.map(card => (
           <Card
             id={card.id}
-            image={card.image}
+            image={card.image[0]}
             title={card.title}
             shortDesc={card.desc}
             location={card.location}

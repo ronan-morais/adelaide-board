@@ -9,7 +9,7 @@ export default function Card(props) {
         <div class="p-6">
           <div class="flex mb-2">
             <h2 class="w-full leading-5 text-md font-bold">{props.title} lorem ipsum dolor sit amet</h2>
-            {props.image && (<div><IoImageOutline class="w-6 h-6 ml-5 text-slate-300" /></div>)}
+            {props.image && (<div><IoImageOutline class="w-10 h-10 ml-5 text-slate-300" /></div>)}
           </div>
           <p class="font-light font-mono text-xs sm:text-sm text-gray-700 hover:text-gray-900 transition-all duration-200">{props.shortDesc}</p>
           <div class="flex flex-col border-t-2 mt-2 pt-2">

@@ -21,8 +21,8 @@ const tables = [
       { name: "contact", type: "string" },
       { name: "website", type: "string" },
       { name: "type", type: "multiple" },
-      { name: "image", type: "string" },
       { name: "needs", type: "multiple" },
+      { name: "image", type: "file[]" },
     ],
   },
   {

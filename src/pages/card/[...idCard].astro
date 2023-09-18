@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Item from "../../layouts/item.astro";
 import { XataClient } from "../../xata";
+import { RiUserFacesContactsLine } from "solid-icons/ri";
 import { BsExclamationDiamond } from "solid-icons/bs";
 import { TbLocation, TbClock } from "solid-icons/tb";
 
@@ -30,7 +31,7 @@ const data = await xata.db.cards
         class="flex pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
       >
         <div class="flex flex-row items-center">
-          <TbLocation class="w-5 h-5 mr-1 text-slate-500" /> Location:&nbsp;
+          <TbLocation class="w-5 h-5 mr-2 text-slate-500" /> Location:&nbsp;
         </div>
         <span class="font-normal">{data?.location}</span>
       </div>
@@ -38,16 +39,16 @@ const data = await xata.db.cards
         class="flex pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
       >
         <div class="flex flex-row items-center">
-          <TbClock class="w-5 h-5 mr-1 text-slate-500" /> Type of
+          <TbClock class="w-5 h-5 mr-2 text-slate-500" /> Type of
           contract:&nbsp;
         </div>
         <span class="font-normal">{data?.type}</span>
       </div>
       <div
-        class="flex flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
+        class="flex border-b-2 mb-4 pb-4 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
       >
         <div class="flex flex-row items-center">
-          <BsExclamationDiamond class="w-5 h-5 mr-1 text-slate-500" />
+          <BsExclamationDiamond class="w-5 h-5 mr-2 text-slate-500" />
            Needed:&nbsp;
         </div>
         {
@@ -55,15 +56,63 @@ const data = await xata.db.cards
             data?.needs.map(prop => <span class="tag">{prop}</span>)
         }
       </div>
+      <div
+        class="flex flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
+      >
+        <div>
+          <div class="flex flex-row items-center">
+            <RiUserFacesContactsLine class="w-5 h-5 mr-2 text-slate-500" />
+             Contact info:&nbsp;
+          </div>
+          <div class="ml-7">
+            <ul>
+              <li>
+                <span class="text-sm"
+                  >Name: <span class="font-normal capitalize"
+                    >{data?.contact}</span
+                  ></span
+                >
+              </li>
+              <li>
+                <span class="text-sm"
+                  >Phone Number: <span class="font-normal capitalize"
+                    >{data?.phoneNumber}</span
+                  ></span
+                >
+              </li>
+              <li>
+                <span class="text-sm"
+                  >Website: <span class="font-normal capitalize"
+                    >{data?.website}</span
+                  ></span
+                >
+              </li>
+              <li>
+                <span class="text-sm"
+                  >E-mail: <span class="font-normal capitalize"
+                    >{data?.email}</span
+                  ></span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="w-1/2 relative bg-red-300 min-h-full">
-      <Image
-        class="absolute w-full h-full object-cover"
-        src={data?.image}
-        alt="pub"
-        width={100}
-        height={100}
-      />
-    </div>
+    {
+      data?.image[0] && (
+        <div class="w-1/2 relative bg-red-300 min-h-full">
+          <a href={data?.image[0].url}>
+            <Image
+              class="absolute w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer"
+              src={data?.image[0].url}
+              alt="pub"
+              width={1000}
+              height={1000}
+            />
+          </a>
+        </div>
+      )
+    }
   </div>
 </Item>
