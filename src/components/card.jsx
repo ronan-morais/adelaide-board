@@ -3,8 +3,6 @@ import { TbLocation, TbClock } from 'solid-icons/tb'
 
 export default function Card(props) {
 
-  console.log("props", props.needs)
-
   return (
     <div class="cursor-pointer mb-4 break-inside-avoid-column max-w-full bg-white rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
       <div class="p-6">
