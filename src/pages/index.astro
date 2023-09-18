@@ -13,20 +13,20 @@ const data = await xata.db.cards.getMany();
 ---
 
 <Board>
-  <div
-    class="px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
-  >
-    {
-      data.map(card => (
-        <Card
-          image={card.image}
-          title={card.title}
-          shortDesc={card.shortDesc}
-          location={card.location}
-          type={card.type}
-          needs={card.needs}
-        />
-      ))
-    }
+  <div class="container mx-auto">
+    <div class="columns-1 sm:columns-2 md:columns-3 lg:columns-4">
+      {
+        data.map(card => (
+          <Card
+            image={card.image}
+            title={card.title}
+            shortDesc={card.shortDesc}
+            location={card.location}
+            type={card.type}
+            needs={card.needs}
+          />
+        ))
+      }
+    </div>
   </div>
 </Board>
