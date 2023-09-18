@@ -21,7 +21,9 @@ const data = await xata.db.cards
 ---
 
 <Item>
-  <div class="container flex bg-white mx-auto rounded-lg overflow-clip">
+  <div
+    class="flex flex-col md:flex-row bg-white mx-6 sm:mx-auto sm:container rounded-lg overflow-clip"
+  >
     <div class="w-full p-10">
       <h1 class="text-xl font-bold border-b-2 mb-4 pb-2">{data?.title}</h1>
       <div class="font-mono text-sm border-b-2 mb-4 pb-4">
@@ -67,28 +69,28 @@ const data = await xata.db.cards
           <div class="ml-7">
             <ul>
               <li>
-                <span class="text-sm"
+                <span class="text-xs sm:text-sm"
                   >Name: <span class="font-normal capitalize"
                     >{data?.contact}</span
                   ></span
                 >
               </li>
               <li>
-                <span class="text-sm"
+                <span class="text-xs sm:text-sm"
                   >Phone Number: <span class="font-normal capitalize"
                     >{data?.phoneNumber}</span
                   ></span
                 >
               </li>
               <li>
-                <span class="text-sm"
+                <span class="text-xs sm:text-sm"
                   >Website: <span class="font-normal capitalize"
                     >{data?.website}</span
                   ></span
                 >
               </li>
               <li>
-                <span class="text-sm"
+                <span class="text-xs sm:text-sm"
                   >E-mail: <span class="font-normal capitalize"
                     >{data?.email}</span
                   ></span
@@ -101,7 +103,7 @@ const data = await xata.db.cards
     </div>
     {
       data?.image[0] && (
-        <div class="w-1/2 relative bg-red-300 min-h-full">
+        <div class="w-1/2 relative bg-gray-300 min-h-full">
           <a href={data?.image[0].url}>
             <Image
               class="absolute w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer"
