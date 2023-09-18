@@ -18,6 +18,7 @@ const data = await xata.db.cards.getAll();
       {
         data.map(card => (
           <Card
+            id={card.id}
             image={card.image}
             title={card.title}
             shortDesc={card.shortDesc}
