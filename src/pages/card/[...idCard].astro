@@ -1,10 +1,60 @@
 ---
 import Item from "../../layouts/item.astro";
+import { XataClient } from "../../xata";
+import { BsExclamationDiamond } from "solid-icons/bs";
+import { TbLocation, TbClock } from "solid-icons/tb";
+
+const xata = new XataClient({
+  apiKey: import.meta.env.XATA_API_KEY,
+  branch: import.meta.env.XATA_BRANCH,
+  enableBrowser: true,
+});
+
 const { idCard } = Astro.params;
+const data = await xata.db.cards
+  .filter({
+    id: idCard,
+  })
+  .getFirst();
 ---
 
 <Item>
-  <div class="container bg-white mx-auto p-10 rounded-lg">
-    <div>TESTE: {idCard}</div>
+  <div class="container flex bg-white mx-auto rounded-lg overflow-clip">
+    <div class="w-full p-10">
+      <h1 class="text-xl font-bold border-b-2 mb-4 pb-2">{data?.title}</h1>
+      <div class="font-mono text-sm border-b-2 mb-4 pb-4">
+        {data?.shortDesc}
+      </div>
+      <div
+        class="flex pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
+      >
+        <div class="flex flex-row items-center">
+          <TbLocation class="w-5 h-5 mr-1 text-slate-500" /> Location:&nbsp;
+        </div>
+        <span class="font-normal">{data?.location}</span>
+      </div>
+      <div
+        class="flex pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
+      >
+        <div class="flex flex-row items-center">
+          <TbClock class="w-5 h-5 mr-1 text-slate-500" /> Type of
+          contract:&nbsp;
+        </div>
+        <span class="font-normal">{data?.type}</span>
+      </div>
+      <div
+        class="flex flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
+      >
+        <div class="flex flex-row items-center">
+          <BsExclamationDiamond class="w-5 h-5 mr-1 text-slate-500" />
+           Needed:&nbsp;
+        </div>
+        {
+          data?.needs &&
+            data?.needs.map(prop => <span class="tag">{prop}</span>)
+        }
+      </div>
+    </div>
+    <div class="w-1/2 bg-red-300">IMAGE</div>
   </div>
 </Item>
