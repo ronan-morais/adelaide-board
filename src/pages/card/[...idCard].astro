@@ -33,15 +33,15 @@ const data = await xata.db.cards
         class="flex pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
       >
         <div class="flex flex-row items-center">
-          <TbLocation class="w-5 h-5 mr-2 text-slate-500" /> Location:&nbsp;
+          <TbLocation class="w-4 sm:w-5 h-4 sm:h-5 mr-2 text-slate-500" /> Location:&nbsp;
         </div>
         <span class="font-normal">{data?.location}</span>
       </div>
       <div
-        class="flex pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
+        class="flex sm:pb-1 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
       >
         <div class="flex flex-row items-center">
-          <TbClock class="w-5 h-5 mr-2 text-slate-500" /> Type of
+          <TbClock class="w-4 sm:w-5 h-4 sm:h-5 mr-2 text-slate-500" /> Type of
           contract:&nbsp;
         </div>
         <span class="font-normal">{data?.type}</span>
@@ -50,7 +50,7 @@ const data = await xata.db.cards
         class="flex border-b-2 mb-4 pb-4 flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
       >
         <div class="flex flex-row items-center">
-          <BsExclamationDiamond class="w-5 h-5 mr-2 text-slate-500" />
+          <BsExclamationDiamond class="w-4 sm:w-5 h-4 sm:h-5 mr-2 text-slate-500" />
            Needed:&nbsp;
         </div>
         {
@@ -62,12 +62,12 @@ const data = await xata.db.cards
         class="flex flex-row items-center text-xs sm:text-base tracking-tigh font-bold"
       >
         <div>
-          <div class="flex flex-row items-center">
-            <RiUserFacesContactsLine class="w-5 h-5 mr-2 text-slate-500" />
+          <div class="flex pb-1 flex-row items-center">
+            <RiUserFacesContactsLine class="w-4 sm:w-5 h-4 sm:h-5 mr-2 text-slate-500" />
              Contact info:&nbsp;
           </div>
           <div class="ml-7">
-            <ul>
+            <ul class="flex flex-col gap-1 sm:gap-0">
               <li>
                 <span class="text-xs sm:text-sm"
                   >Name: <span class="font-normal capitalize"
@@ -103,10 +103,10 @@ const data = await xata.db.cards
     </div>
     {
       data?.image[0] && (
-        <div class="w-1/2 relative bg-gray-300 min-h-full">
+        <div class="w-full md:w-1/2 md:relative bg-gray-300 min-h-full">
           <a href={data?.image[0].url}>
             <Image
-              class="absolute w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer"
+              class="md:absolute w-full h-full object-cover hover:scale-105 transition duration-500 cursor-pointer"
               src={data?.image[0].url}
               alt="pub"
               width={1000}
