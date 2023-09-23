@@ -5,8 +5,9 @@ export default function Card(props) {
 
   return (
     <a href={`./card/${props.id}`}>
-      <div class="cursor-pointer mb-4 break-inside-avoid-column max-w-full bg-white rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
+      <div class="cursor-pointer h-full max-w-full bg-white rounded-lg hover:shadow-md hover:border-opacity-0 transform hover:-translate-y-1 transition-all duration-200">
         <div class="p-6">
+          <h1>{props.index}</h1>
           <div class="flex mb-2">
             <h2 class="w-full leading-5 text-md font-bold">{props.title} lorem ipsum dolor sit amet</h2>
             {props.image && (<div><IoImageOutline class="w-10 h-10 ml-5 text-slate-300" /></div>)}
