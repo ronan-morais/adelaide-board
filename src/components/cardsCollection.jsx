@@ -1,45 +1,38 @@
 import Card from "./card";
+import { For } from "solid-js";
 import { useStore } from "@nanostores/solid";
-import { XataClient } from "../xata";
-import { createSignal } from "solid-js";
-import { mainData, pageNumber } from "../stores/dataCollection";
+import { pageNumber, nextPage, updateData } from "../stores/dataCollection";
+import {GetData} from "./db/getData"
 
-const xata = new XataClient({
-  apiKey: import.meta.env.XATA_API_KEY,
-  branch: import.meta.env.XATA_BRANCH,
-  enableBrowser: true,
-});
+//const mainCards = useStore(mainData);
+//const pages = useStore(pageNumber);
 
-const mainCards = useStore(mainData);
-const page = useStore(pageNumber)
+//const numberPage = useStore(pageNumber)
+const getData = await GetData()
+console.log("Data", getData)
 
-const data = await xata.db.cards.getAll();
-if (data) {
-  mainData.set(data);
-}
 
 export default function CardsCollection() {
 
   return (
     <div class="container px-6 sm:px-0 mx-auto">
       <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+        class="grid pt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       >
-        <div>TESTE {page()}</div>
-        {
-          mainCards().map((card, index) => (
-            <Card
-              id={card.id}
-              index={index}
-              image={card.image[0]}
-              title={card.title}
-              shortDesc={card.desc}
-              location={card.location}
-              type={card.type}
-              needs={card.needs}
-            />
-          ))
-        }
+        <div>click: {/* numberPage() */}</div>
+        <button onClick={() => nextPage()}>teste</button>
+        {/* <For each={ }>
+          <Card
+            id={card.id}
+            index={index}
+            image={card.image[0]}
+            title={card.title}
+            shortDesc={card.desc}
+            location={card.location}
+            type={card.type}
+            needs={card.needs}
+          />
+        </For> */}
       </div>
     </div>
   )

@@ -1,12 +1,11 @@
-import { createSignal } from "solid-js";
-import { useStore } from "@nanostores/solid";
-import { mainData, pageNumber } from "../../stores/dataCollection";
+import { useStore } from "@nanostores/solid"; 
+import { pageNumber, nextPage } from "../../stores/dataCollection";
 
 
 export default function FilterTags() {
 
   //const [count, setCount] = createSignal(0)
-  const numb = useStore(pageNumber)
+  const numberPage = useStore(pageNumber)
 
   function filtrarPorTags(data, tagsDeBusca) {
     return data.filter((item) => {
@@ -14,34 +13,17 @@ export default function FilterTags() {
         return item.needs.includes(tag);
       });
     });
-  }
-
-  function teste() {
-    //mainData.set(filtrarPorTags(mainData.get(),["ugh"]))
-    //console.log("xxx", mainData.get())
-
-    pageNumber.set(numb() + 1)
-    /* mainData.set([{
-      id: "123",
-      image: "teste",
-      title: "teste",
-      shortDesc: "",
-      location: "teste",
-      type: "",
-      needs: ["teste1", "teste2"]
-    }]) */
-    //console.log(mainData.get())
-  }
+  } 
 
   //const filtrado = filtrarPorTags(mainCards, ["white card", "ugh"]);
   //console.log("filtrados:", filtrado);
 
   return (
     <>
-      <div>click: {numb()}</div>
-      <button onClick={teste}>White Card</button>
-      <button onClick={teste}>RSA</button>
-      <button onClick={teste}>Ugh</button>
+      <div>click: {numberPage()}</div>
+      <button onClick={()=>nextPage()}>White Card</button>
+      <button onClick={()=>nextPage()}>RSA</button>
+      <button onClick={()=>nextPage()}>Ugh</button>
     </>
   )
 }
