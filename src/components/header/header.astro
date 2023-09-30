@@ -1,11 +1,11 @@
 ---
 import Nav from "./nav";
-import Logo from "./logo.astro";
-import Searchbar from "./searchbar.jsx"
+import { Logo } from "./logo.jsx";
+import Searchbar from "./searchbar.jsx";
 ---
 
 <header class="gap-6 sm:container flex flex-1 py-10 mx-6 sm:mx-auto">
-  <Logo />
-  <Searchbar client:load/>
-  <Nav/>
+  <Logo client:load />
+  <Searchbar client:load />
+  <Nav />
 </header>
