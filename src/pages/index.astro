@@ -1,10 +1,8 @@
 ---
 import Board from "../layouts/board.astro";
-import FilterTags from "../components/header/filterTags";
 import CardsCollection from "../components/cardsCollection.jsx";
 ---
     
 <Board>
-  <FilterTags client:load />
   <CardsCollection client:load />
 </Board>

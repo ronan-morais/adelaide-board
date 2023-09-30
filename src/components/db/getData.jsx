@@ -6,7 +6,7 @@ const xata = new XataClient({
   enableBrowser: true,
 });
 
-export async function GetData(){
+export async function getData(){
   const data = await xata.db.cards.getAll();
   if (data) {
     return data;

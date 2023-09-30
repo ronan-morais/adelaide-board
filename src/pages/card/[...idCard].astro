@@ -7,12 +7,13 @@ import { BsExclamationDiamond } from "solid-icons/bs";
 import { TbLocation, TbClock } from "solid-icons/tb";
 
 const xata = new XataClient({
-  apiKey: import.meta.env.XATA_API_KEY,
-  branch: import.meta.env.XATA_BRANCH,
+  apiKey: import.meta.env.PUBLIC_XATA_API_KEY,
+  branch: import.meta.env.PUBLIC_XATA_BRANCH,
   enableBrowser: true,
 });
 
 const { idCard } = Astro.params;
+
 const data = await xata.db.cards
   .filter({
     id: idCard,
