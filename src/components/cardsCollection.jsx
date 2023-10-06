@@ -16,7 +16,7 @@ export default function CardsCollection() {
   const [dataSig, setDataSig] = createSignal(data())
   const tags = data().map(tag => tag.needs).flat()
 
-  function handleTag(tag) {
+  function handleTag(e, tag) {
     if (filterTags.get().includes(tag)) {
       filterTags.get().splice(filterTags.get().indexOf(tag), 1)
     } else {
@@ -30,26 +30,27 @@ export default function CardsCollection() {
         return item
       }
     }))
+
+    if (filterTags.get().includes(tag)) {
+      e.target.classList.add("-translate-y-1", "border-b-orange-400", "border-b-4", "border-r-orange-400", "border-r-4")
+    } else {
+      e.target.classList.remove("-translate-y-1", "border-b-orange-400", "border-b-4", "border-r-orange-400", "border-r-4")
+    }
   }
 
-  function toggleClass(e, tag) {
-    if (filterTags.get().includes(tag)) {
-      e.target.classList.remove("hover:bg-transparent")
-      e.target.classList.add("bg-yellow-500")
-    } else {
-      e.target.classList.add("hover:bg-transparent")
-      e.target.classList.remove("bg-yellow-500")
-    }
+  /* function toggleClass(e, tag) {
     console.log(e.target.classList)
-  }
+  } */
 
   return (
     <div class="container px-6 sm:px-0 mx-auto">
+      <div class="h-5">
       <For each={tags}>
         {tag => (
-          <button onClick={(e) => { handleTag(tag); toggleClass(e, tag) }} class={`bg-slate-50 px-2 rounded-lg me-1 hover:bg-transparent`}>{tag}</button>
+          <button onClick={(e) => handleTag(e, tag)} class="bg-slate-50 px-2 rounded-lg me-1 hover:-translate-y-1 transition-all hover:border-b-orange-400 hover:border-b-4 hover:border-r-orange-400 hover:border-r-4">{tag}</button>
         )}
       </For>
+      </div>
       <div
         class="grid pt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       >
