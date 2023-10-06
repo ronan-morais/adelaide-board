@@ -13,6 +13,7 @@
     "@astrojs/solid-js": "^3.0.0",
     "@astrojs/tailwind": "^5.0.0",
     "@astrojs/vercel": "^5.0.0",
+    "@formkit/auto-animate": "^0.8.0",
     "@nanostores/solid": "^0.4.2",
     "@xata.io/client": "^0.26.3",
     "astro": "^3.0.7",

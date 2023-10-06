@@ -1,4 +1,5 @@
 import Card from "./card";
+import { createAutoAnimateDirective } from "@formkit/auto-animate/solid"
 import { For, createSignal, } from "solid-js";
 import { useStore } from "@nanostores/solid";
 import { mainData, filterTags, updateData } from "../stores/dataCollection";
@@ -7,6 +8,8 @@ import { getData } from "./db/getData"
 const dataCards = await getData()
 
 export default function CardsCollection() {
+
+  const autoAnimate = createAutoAnimateDirective()
 
   if (dataCards) {
     updateData(dataCards)
@@ -38,20 +41,17 @@ export default function CardsCollection() {
     }
   }
 
-  /* function toggleClass(e, tag) {
-    console.log(e.target.classList)
-  } */
-
   return (
     <div class="container px-6 sm:px-0 mx-auto">
       <div class="h-5">
-      <For each={tags}>
-        {tag => (
-          <button onClick={(e) => handleTag(e, tag)} class="bg-slate-50 px-2 rounded-lg me-1 hover:-translate-y-1 transition-all hover:border-b-orange-400 hover:border-b-4 hover:border-r-orange-400 hover:border-r-4">{tag}</button>
-        )}
-      </For>
+        <For each={tags}>
+          {tag => (
+            <button onClick={(e) => handleTag(e, tag)} class="bg-slate-50 px-2 rounded-lg me-1 hover:-translate-y-1 transition-all hover:border-b-orange-400 hover:border-b-4 hover:border-r-orange-400 hover:border-r-4">{tag}</button>
+          )}
+        </For>
       </div>
       <div
+        use:autoAnimate
         class="grid pt-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
       >
         <For each={dataSig()}>
