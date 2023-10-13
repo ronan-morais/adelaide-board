@@ -8,12 +8,11 @@ export default function SearchBar() {
 
   function handleInput(event){
     setInput(event.target.value)
-    console.log("inputxx: ", input())
   }
 
   return (
     <div class="flex items-center w-full justify-normal">
-      <input type="text" class="w-full rounded-md text-md py-2 px-2" id="searchInput" onInput={handleInput} value={input()} />
+      <input type="text" class="w-full rounded-lg text-md py-2 px-2 focus:ring-2 bg-white outline-0" id="searchInput" onInput={handleInput} value={input()} />
     </div>
   )
 }
